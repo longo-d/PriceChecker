@@ -14,6 +14,7 @@ import org.jsoup.select.Elements;
 
 import classes.Longos;
 import classes.Product;
+import classes.Voila;
 
 @WebServlet("/results")
 public class Scrape extends HttpServlet {
@@ -35,8 +36,13 @@ public class Scrape extends HttpServlet {
 		Longos longos = new Longos();
 		Elements longosContainer = longos.pageContainer(search);
 		ArrayList<Product> longosProduct = longos.information(longosContainer);
-				
 		request.setAttribute("longosProduct", longosProduct);
+		
+		Voila voila = new Voila();
+		Elements voilaContainer = voila.pageContainer(search);
+		ArrayList<Product> voilaProduct = voila.information(voilaContainer);
+		request.setAttribute("voilaProduct", voilaProduct);
+
 
 		doGet(request, response);
 

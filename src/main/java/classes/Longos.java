@@ -15,16 +15,16 @@ public class Longos {
 	private Product product;	
 	private ArrayList<Product> products = new ArrayList<Product>();
 	private WebDriver driver;	
-	private final String longosUrl = "https://longos.com";
-	private Element productName, productDollar, productCents, productUrl, productImage, productSize;
-	private String productPrice;
+	private final String longosUrl = "https://www.longos.com";
+	private Element productName, productDollar, productCents, productUrl, productSize;
+	private String productPrice, url;
 	private int i, dollarLength;
-
+	
 //	connect and retrieve webpage based on search
 	private Document connect(String search) {
 
 //		longos search url
-		String url = "https://www.longos.com/search/"+search+"?q="+search;
+		url = "https://www.longos.com/search/"+search+"?q="+search;
 		
 //		set webdriver properties and options
 		System.setProperty("webdriver.chrome.driver", "C:/drivers/chromedriver.exe");
@@ -60,11 +60,13 @@ public class Longos {
 						
 //			loop through each container to gather details
 			for (Element e : container) {
+				
+//				details
 				productName = e.select("h5.card-title.mb-0").first();
 				productDollar= e.select("strong.price").first();
 				productCents = e.select("sup.cents").first();
 				productUrl = e.select("a").first();
-				productImage = e.select("img").first();
+//				productImage = e.select("img").first();
 				productSize = e.select("span.unit").first();
 								
 //				formatting for product price
@@ -76,7 +78,7 @@ public class Longos {
 				product = new ProductBuilder()
 						.buildProductName(productName.text())
 						.buildProductPrice(productPrice)
-						.buildProductImage(productImage.attr("src"))
+//						.buildProductImage(productImage.attr("src"))
 						.buildProductUrl(longosUrl + productUrl.attr("href"))
 						.buildProductSize(productSize.text().substring(2))
 						.build();
@@ -88,11 +90,9 @@ public class Longos {
 				i++;
 				
 //				break container and return array list when product count is 3
-				if (i==3) {
-					return products;
-				}
-				
+				if (i==3) return products;
 			}
+			
 //			this will never be reached
 			return null;
 			

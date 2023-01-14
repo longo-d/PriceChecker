@@ -27,10 +27,10 @@
 
 <table>
 	<tr>
+		<td><b>Retailer</b></td>
 		<td><b>Product Name</b></td>
 		<td><b>Product Price</b></td>
 		<td><b>Product Size</b></td>
-		<td><b>Product Image</b></td>
 	</tr>
 
 <% 
@@ -42,13 +42,33 @@ if (longosProduct != null ) {
 	for (Product p : longosProduct) { %>
 	
 	<tr><td>
+	Longo's
+	</td><td>
 	<a href=<%= p.getProductUrl() %>><%= p.getProductName() %></a>
 	</td><td>
 	<%= p.getProductPrice() %>
 	</td><td>
 	<%= p.getProductSize() %>
+	</td></tr>	
+	<% }
+} %>
+
+<% 
+
+@SuppressWarnings("unchecked")
+ArrayList<Product> voilaProduct = (ArrayList<Product>) request.getAttribute("voilaProduct");
+			
+if (voilaProduct != null ) {
+	for (Product p : voilaProduct) { %>
+	
+	<tr><td>
+	Voila
 	</td><td>
-	<img src=<%= p.getProductImage() %>></img>
+	<a href=<%= p.getProductUrl() %>><%= p.getProductName() %></a>
+	</td><td>
+	<%= p.getProductPrice() %>
+	</td><td>
+	<%= p.getProductSize() %>
 	</td></tr>	
 	<% }
 } %>
