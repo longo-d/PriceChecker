@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.jsoup.select.Elements;
 
+import classes.Loblaws;
 import classes.Longos;
 import classes.Product;
 import classes.Voila;
@@ -42,6 +43,12 @@ public class Scrape extends HttpServlet {
 		Elements voilaContainer = voila.pageContainer(search);
 		ArrayList<Product> voilaProduct = voila.information(voilaContainer);
 		request.setAttribute("voilaProduct", voilaProduct);
+		
+		Loblaws loblaws  = new Loblaws();
+		Elements loblawsContainer = loblaws.pageContainer(search);
+		ArrayList<Product> loblawsProduct = loblaws.information(loblawsContainer);
+		request.setAttribute("loblawsProduct", loblawsProduct);
+
 
 
 		doGet(request, response);

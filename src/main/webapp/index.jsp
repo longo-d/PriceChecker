@@ -31,10 +31,10 @@
 		<td><b>Product Name</b></td>
 		<td><b>Product Price</b></td>
 		<td><b>Product Size</b></td>
+		<td><b>Product Per</b></td>
 	</tr>
 
 <% 
-
 @SuppressWarnings("unchecked")
 ArrayList<Product> longosProduct = (ArrayList<Product>) request.getAttribute("longosProduct");
 			
@@ -48,7 +48,7 @@ if (longosProduct != null ) {
 	</td><td>
 	<%= p.getProductPrice() %>
 	</td><td>
-	<%= p.getProductSize() %>
+	<%=  %>
 	</td></tr>	
 	<% }
 } %>
@@ -68,7 +68,28 @@ if (voilaProduct != null ) {
 	</td><td>
 	<%= p.getProductPrice() %>
 	</td><td>
+	<%=  %>
+	</td></tr>	
+	<% }
+} %>
+
+<% 
+@SuppressWarnings("unchecked")
+ArrayList<Product> loblawsProduct = (ArrayList<Product>) request.getAttribute("loblawsProduct");
+			
+if (loblawsProduct != null ) {
+	for (Product p : loblawsProduct) { %>
+	
+	<tr><td>
+	Loblaws
+	</td><td>
+	<a href=<%= p.getProductUrl() %>><%= p.getProductName() %></a>
+	</td><td>
+	<%= p.getProductPrice() %>
+	</td><td>
 	<%= p.getProductSize() %>
+	</td><td>
+	<%= p.getProductPer() %>
 	</td></tr>	
 	<% }
 } %>

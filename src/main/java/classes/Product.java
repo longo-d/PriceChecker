@@ -7,6 +7,7 @@ public class Product {
 	private String productSize;
 	private String productUrl;
 	private String productImage;
+	private String productPer;
 
 	public Product(ProductBuilder productBuilder) {
 		this.productName = productBuilder.productName;
@@ -14,6 +15,7 @@ public class Product {
 		this.productSize = productBuilder.productSize;
 		this.productUrl = productBuilder.productUrl;
 		this.productImage = productBuilder.productImage;
+		this.productPer = productBuilder.productPer;
 	}
 	
 	public String getProductName() {
@@ -34,6 +36,10 @@ public class Product {
 	
 	public String getProductImage() {
 		return productImage;
+	}
+	
+	public String getProductPer() {
+		return productPer;
 	}
  	
 }

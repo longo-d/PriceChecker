@@ -7,6 +7,7 @@ public class ProductBuilder implements ProductBuilderInterface {
 	String productSize;
 	String productUrl;
 	String productImage;
+	String productPer;
 	
 	public Product build() {
 		return new Product(this);
@@ -41,6 +42,12 @@ public class ProductBuilder implements ProductBuilderInterface {
 	@Override
 	public ProductBuilder buildProductImage(String productImage) {
 		this.productImage= productImage;
+		return this;
+	}
+	
+	@Override 
+	public ProductBuilder buildProductPer(String productPer) {
+		this.productPer = productPer;
 		return this;
 	}
 

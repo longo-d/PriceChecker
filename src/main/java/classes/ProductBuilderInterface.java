@@ -7,5 +7,6 @@ public interface ProductBuilderInterface {
 	ProductBuilder buildProductSize(String productSize);
 	ProductBuilder buildProductUrl(String productUrl);
 	ProductBuilder buildProductImage(String productImage);
+	ProductBuilder buildProductPer(String productPer);
 	
 }
